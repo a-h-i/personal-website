@@ -1,12 +1,8 @@
-import { MediumFeedItem } from '@/app/api/medium_feed/route';
+import {getMediumFeed, MediumFeedItem} from "@/lib/actions/mediumPosts.action";
 export const revalidate = 60 * 60;
 
 export default async function Writing() {
-  // medium rss feed fails from server components
-  const response = await fetch(
-    `${process.env.NEXT_PUBLIC_HOST}/api/medium_feed`,
-  );
-  const posts: MediumFeedItem[] = await response.json();
+  const posts: MediumFeedItem[] = await getMediumFeed();
   return (
     <section id='writing' className='scroll-mt-24'>
       <h2 className='text-sm font-semibold tracking-widest text-emerald-400 uppercase'>
