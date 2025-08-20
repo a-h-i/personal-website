@@ -110,7 +110,7 @@ frontend:
         preBuild:
             commands:
               - nvm install 24
-              - nvm use 24
+              - nvm use 22
               - corepack enable
               - corepack prepare pnpm@latest --activate 
               - pnpm install --frozen-lockfile
