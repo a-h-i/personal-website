@@ -19,7 +19,6 @@ const parser = new Parser<MediumItem>({
 
 export type MediumFeedItem = {
   title: string;
-  url: string;
   date?: Date;
   html: string;
   categories: string[];
@@ -33,12 +32,11 @@ export async function getMediumFeed(): Promise<MediumFeedItem[]> {
     const feed = await parser.parseURL(feedUrl);
     return feed.items.map((item) => ({
       title: item.title!,
-      url: item.link!,
       date: item.isoDate ? new Date(item.isoDate) : undefined,
       html: item.content ?? '',
       categories: item.categories ?? [],
       guid: item.guid ?? item.link!,
-      link: item.link!,
+      link: item.guid ?? item.link!,
     }));
   } catch (error) {
     console.error('Error fetching Medium feed:', inspect(error, { depth: 20 }));
