@@ -85,37 +85,37 @@ export default function Nav() {
         <a
           href='https://github.com/a-h-i'
           aria-label='GitHub'
-          className='rounded-md p-2 ring-1 ring-white/10 hover:text-slate-200 hover:ring-white/20'
+          className='rounded-md bg-emerald-500 p-2 ring-1 ring-white/10 transition hover:text-slate-200 hover:ring-white'
         >
           <Image src='/github.svg' alt='github' width={16} height={16} />
         </a>
         <a
           href='https://www.linkedin.com/in/ah450/'
           aria-label='LinkedIn'
-          className='rounded-md p-2 ring-1 ring-white/10 hover:text-slate-200 hover:ring-white/20'
+          className='rounded-md bg-emerald-500 p-2 ring-1 ring-white/10 transition hover:text-slate-200 hover:ring-white'
         >
           <Image src='/linkedin.png' alt='linkedin' width={16} height={16} />
         </a>
         <a
           href='mailto:ah3md.hisham@gmail.com'
           aria-label='Email'
-          className='rounded-md p-2 ring-1 ring-white/10 hover:text-slate-200 hover:ring-white/20'
+          className='rounded-md bg-emerald-500 p-2 ring-1 ring-white/10 transition hover:text-slate-200 hover:ring-white'
         >
-          <Mail className='h-4 w-4' />
+          <Mail color='black' className='h-4 w-4' />
         </a>
         <a
           href='https://medium.com/@ahm3d.hisham'
           aria-label='Medium'
-          className='rounded-md p-2 ring-1 ring-white/10 hover:text-slate-200 hover:ring-white/20'
+          className='rounded-md bg-emerald-500 p-2 ring-1 ring-white/10 transition hover:text-slate-200 hover:ring-white'
         >
           <Image alt='medium' src='/medium.svg' width={16} height={16} />
         </a>
         <a
           href='Ahmed_Ismail_resume.pdf'
           aria-label='Resume'
-          className='rounded-md p-2 ring-1 ring-white/10 hover:text-slate-200 hover:ring-white/20'
+          className='rounded-md bg-emerald-500 p-2 ring-1 ring-white/10 transition hover:text-slate-200 hover:ring-white'
         >
-          <FileUser className='h-4 w-4' />
+          <FileUser color='black' className='h-4 w-4' />
         </a>
       </div>
     </aside>
