@@ -7,28 +7,47 @@ const domain = cfg.require('domain');
 const posthogConfig = new pulumi.Config('posthog');
 const posthogKey = posthogConfig.requireSecret('key');
 const posthogHost = posthogConfig.require('host');
-const awsConfig = new pulumi.Config('aws');
-const awsRegion = awsConfig.require('region');
+
+
+
 
 const zone = aws.route53.getZone({ name: domain, privateZone: false });
 
-// Service role for Amplify
-const amplifyRole = new aws.iam.Role("amplifyServiceRole", {
-  assumeRolePolicy: JSON.stringify({
+const acct = pulumi.output(aws.getCallerIdentity({})).accountId;
+const region = pulumi.output(aws.getRegion({})).region;
+
+const serviceRoleTrust = pulumi.all([acct, region]).apply(([a, r]) =>
+  JSON.stringify({
     Version: "2012-10-17",
     Statement: [{
       Effect: "Allow",
-      Principal: { Service: "amplify.amazonaws.com" },
+      Principal: {
+        Service: [
+          "amplify.amazonaws.com",
+          `amplify.${r}.amazonaws.com`,
+          "amplifybackend.amazonaws.com"
+        ],
+      },
       Action: "sts:AssumeRole",
+      Condition: {
+        ArnLike: { "aws:SourceArn": `arn:aws:amplify:${r}:${a}:apps/*` },
+        StringEquals: { "aws:SourceAccount": a }
+      }
     }],
-  }),
+  })
+);
+
+// Service role for Amplify
+const amplifyRole = new aws.iam.Role("amplifyServiceRole", {
+  assumeRolePolicy: serviceRoleTrust,
 });
 
 // Give Amplify the managed admin policy for hosting
-new aws.iam.RolePolicyAttachment("amplifyAdmin", {
+const amplifyAdmin = new aws.iam.RolePolicyAttachment("amplifyAdmin", {
   role: amplifyRole.name,
   policyArn: "arn:aws:iam::aws:policy/AdministratorAccess-Amplify",
 });
+
 
 const app = new aws.amplify.App('personal-website', {
   name: 'personal-website',
@@ -59,7 +78,6 @@ const app = new aws.amplify.App('personal-website', {
     NEXT_PUBLIC_POSTHOG_KEY: posthogKey,
     NEXT_PUBLIC_POSTHOG_HOST: posthogHost,
   },
-  region: awsRegion,
   iamServiceRoleArn: amplifyRole.arn,
 });
 const main = new aws.amplify.Branch('main', {
@@ -67,6 +85,8 @@ const main = new aws.amplify.Branch('main', {
   branchName: 'main',
   stage: 'PRODUCTION',
   enableAutoBuild: true,
+}, {
+  dependsOn: [amplifyAdmin]
 });
 
 const domainAssoc = new aws.amplify.DomainAssociation(
@@ -80,4 +100,7 @@ const domainAssoc = new aws.amplify.DomainAssociation(
       { branchName: main.branchName, prefix: '' },
     ],
   },
+  {
+    dependsOn: [main]
+  }
 );
