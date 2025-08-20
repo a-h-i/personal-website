@@ -41,12 +41,13 @@ const app = new aws.amplify.App('personal-website', {
     NEXT_PUBLIC_POSTHOG_KEY: posthogKey,
     NEXT_PUBLIC_POSTHOG_HOST: posthogHost,
   },
-  enableAutoBranchCreation: true,
-  autoBranchCreationPatterns: ['main'],
-  autoBranchCreationConfig: {
-    enableAutoBuild: true,
-  },
   region: awsRegion,
+});
+const main = new aws.amplify.Branch("main", {
+  appId: app.id,
+  branchName: 'main',
+  stage: "PRODUCTION",
+  enableAutoBuild: true,
 });
 
 const domainAssoc = new aws.amplify.DomainAssociation(
@@ -56,8 +57,8 @@ const domainAssoc = new aws.amplify.DomainAssociation(
     domainName: domain,
     certificateSettings: { type: 'AMPLIFY_MANAGED' },
     subDomains: [
-      { branchName: 'main', prefix: 'www' },
-      { branchName: 'main', prefix: '' },
+      { branchName: main.branchName, prefix: 'www' },
+      { branchName: main.branchName, prefix: '' },
     ],
   },
 );
