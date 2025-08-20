@@ -16,7 +16,49 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: 'Ahmed H. Ismail',
-  description: 'Full Stack Developer',
+  description: 'Full Stack Developer, building fast, scalable and reliable systems',
+  applicationName: 'Ahmed H. Ismail',
+  authors: [
+    {
+      name: 'Ahmed H. Ismail',
+      url: process.env.NEXT_PUBLIC_HOST!,
+    }
+  ],
+  metadataBase: new URL(process.env.NEXT_PUBLIC_HOST!),
+  keywords: [
+    "Next.js",
+    "Typescript",
+    "Kubernetes",
+    "Pulumi",
+    "Docker",
+    "React",
+    "Developer",
+    "Freelancer"
+  ],
+  robots: {
+    index: true,
+    follow: true,
+    'max-snippet': -1,
+    'max-video-preview': -1,
+    'max-image-preview': 'large',
+    noimageindex: false,
+    nocache: false,
+  },
+  openGraph: {
+    type: 'website',
+    url: process.env.NEXT_PUBLIC_HOST!,
+    title: 'Ahmed H. Ismail - Senior Software Engineer',
+    description: 'Full Stack Developer, building fast, scalable and reliable systems',
+    images: [
+      `${process.env.NEXT_PUBLIC_HOST!}/opengraph-image`
+    ]
+  },
+  icons: {
+    icon: '/favicon.ico',
+    shortcut: "/favicon-32x32.png",
+    apple: "/apple-touch-icon.png",
+  },
+  manifest: "/site.webmanifest",
 };
 
 export default function RootLayout({
