@@ -1,4 +1,4 @@
-import { NextResponse } from "next/server";
+import { NextResponse } from 'next/server';
 
 export function GET() {
   return new NextResponse(
@@ -6,6 +6,6 @@ export function GET() {
 Allow: /
 Sitemap: ${process.env.NEXT_PUBLIC_HOST!}/sitemap.xml
 `,
-    { headers: { "Content-Type": "text/plain" } }
+    { headers: { 'Content-Type': 'text/plain' } },
   );
 }

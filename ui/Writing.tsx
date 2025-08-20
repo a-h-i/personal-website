@@ -1,4 +1,7 @@
-import {getMediumFeed, MediumFeedItem} from "@/lib/actions/mediumPosts.action";
+import {
+  getMediumFeed,
+  MediumFeedItem,
+} from '@/lib/actions/mediumPosts.action';
 export const revalidate = 60 * 60;
 
 export default async function Writing() {
