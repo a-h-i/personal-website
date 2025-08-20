@@ -43,10 +43,10 @@ const app = new aws.amplify.App('personal-website', {
   },
   region: awsRegion,
 });
-const main = new aws.amplify.Branch("main", {
+const main = new aws.amplify.Branch('main', {
   appId: app.id,
   branchName: 'main',
-  stage: "PRODUCTION",
+  stage: 'PRODUCTION',
   enableAutoBuild: true,
 });
 
