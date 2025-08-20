@@ -109,8 +109,11 @@ frontend:
     phases:
         preBuild:
             commands:
-            - npm -g install pnpm
-            - pnpm install
+              - nvm install 24
+              - nvm use 24
+              - corepack enable
+              - corepack prepare pnpm@latest --activate 
+              - pnpm install --frozen-lockfile
         build:
             commands:
                 - pnpm build
