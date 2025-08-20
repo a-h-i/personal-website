@@ -12,6 +12,24 @@ const awsRegion = awsConfig.require('region');
 
 const zone = aws.route53.getZone({ name: domain, privateZone: false });
 
+// Service role for Amplify
+const amplifyRole = new aws.iam.Role("amplifyServiceRole", {
+  assumeRolePolicy: JSON.stringify({
+    Version: "2012-10-17",
+    Statement: [{
+      Effect: "Allow",
+      Principal: { Service: "amplify.amazonaws.com" },
+      Action: "sts:AssumeRole",
+    }],
+  }),
+});
+
+// Give Amplify the managed admin policy for hosting
+new aws.iam.RolePolicyAttachment("amplifyAdmin", {
+  role: amplifyRole.name,
+  policyArn: "arn:aws:iam::aws:policy/AdministratorAccess-Amplify",
+});
+
 const app = new aws.amplify.App('personal-website', {
   name: 'personal-website',
   repository: 'https://github.com/a-h-i/personal-website',
@@ -42,6 +60,7 @@ const app = new aws.amplify.App('personal-website', {
     NEXT_PUBLIC_POSTHOG_HOST: posthogHost,
   },
   region: awsRegion,
+  iamServiceRoleArn: amplifyRole.arn,
 });
 const main = new aws.amplify.Branch('main', {
   appId: app.id,
