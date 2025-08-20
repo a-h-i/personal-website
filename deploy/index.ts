@@ -4,6 +4,9 @@ import * as aws from "@pulumi/aws";
 const cfg = new pulumi.Config();
 const githubToken = cfg.requireSecret("githubToken");
 const domain = cfg.require("domain");
+const posthogConfig = new pulumi.Config("posthog");
+const posthogKey = posthogConfig.requireSecret("key");
+const posthogHost = posthogConfig.require("host");
 
 
 const zone = aws.route53.getZone({ name: domain, privateZone: false });
@@ -34,6 +37,8 @@ const app = new aws.amplify.App("personal-website", {
     `,
     environmentVariables: {
         NEXT_PUBLIC_HOST: `https://${domain}`,
+        NEXT_PUBLIC_POSTHOG_KEY: posthogKey,
+        NEXT_PUBLIC_POSTHOG_HOST: posthogHost,
     },
     enableAutoBranchCreation: true,
     autoBranchCreationPatterns: ["main"],
