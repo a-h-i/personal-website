@@ -1,0 +1,54 @@
+import * as pulumi from "@pulumi/pulumi";
+import * as aws from "@pulumi/aws";
+
+const cfg = new pulumi.Config();
+const githubToken = cfg.requireSecret("githubToken");
+const domain = cfg.require("domain");
+
+
+const zone = aws.route53.getZone({ name: domain, privateZone: false });
+
+const app = new aws.amplify.App("personal-website", {
+    name: "personal-website",
+    repository: "https://github.com/a-h-i/personal-website",
+    accessToken: githubToken,
+    platform: "WEB_COMPUTE",
+    buildSpec: `version: 1
+    frontend:
+        phases:
+            preBuild:
+                commands:
+                - npm -g install pnpm
+                - pnpm install
+            build:
+                commands:
+                    - pnpm build
+        artifacts:
+            baseDirectory: .next
+            files:
+                - '**/*'
+        cache:
+            paths:
+                - node_modules/**/*
+                
+    `,
+    environmentVariables: {
+        NEXT_PUBLIC_HOST: `https://${domain}`,
+    },
+    enableAutoBranchCreation: true,
+    autoBranchCreationPatterns: ["main"],
+    autoBranchCreationConfig: {
+        enableAutoBuild: true,
+    },
+    region: 'eu-west-3'
+});
+
+const domainAssoc = new aws.amplify.DomainAssociation("personal-website-domain", {
+    appId: app.id,
+    domainName: domain,
+    certificateSettings: {type: 'AMPLIFY_MANAGED'},
+    subDomains: [
+        { branchName: 'main', prefix: "www" },
+        { branchName: 'main', prefix: "" },
+    ],
+})
