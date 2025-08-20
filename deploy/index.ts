@@ -8,46 +8,41 @@ const posthogConfig = new pulumi.Config('posthog');
 const posthogKey = posthogConfig.requireSecret('key');
 const posthogHost = posthogConfig.require('host');
 
-
-
-
 const zone = aws.route53.getZone({ name: domain, privateZone: false });
 
 const acct = pulumi.output(aws.getCallerIdentity({})).accountId;
 const region = pulumi.output(aws.getRegion({})).region;
 
-const serviceRoleTrust = pulumi.all([acct, region]).apply(([a, r]) =>
+const serviceRoleTrust = pulumi.all([acct, region]).apply(([_, r]) =>
   JSON.stringify({
-    Version: "2012-10-17",
-    Statement: [{
-      Effect: "Allow",
-      Principal: {
-        Service: [
-          "amplify.amazonaws.com",
-          `amplify.${r}.amazonaws.com`,
-          "amplifybackend.amazonaws.com"
-        ],
+    Version: '2012-10-17',
+    Statement: [
+      {
+        Effect: 'Allow',
+        Principal: {
+          Service: [
+            'amplify.amazonaws.com',
+            `amplify.${r}.amazonaws.com`,
+            'amplifybackend.amazonaws.com',
+            'codebuild.amazonaws.com',
+          ],
+        },
+        Action: 'sts:AssumeRole',
       },
-      Action: "sts:AssumeRole",
-      Condition: {
-        ArnLike: { "aws:SourceArn": `arn:aws:amplify:${r}:${a}:apps/*` },
-        StringEquals: { "aws:SourceAccount": a }
-      }
-    }],
-  })
+    ],
+  }),
 );
 
 // Service role for Amplify
-const amplifyRole = new aws.iam.Role("amplifyServiceRole", {
+const amplifyRole = new aws.iam.Role('amplifyServiceRole', {
   assumeRolePolicy: serviceRoleTrust,
 });
 
 // Give Amplify the managed admin policy for hosting
-const amplifyAdmin = new aws.iam.RolePolicyAttachment("amplifyAdmin", {
+const amplifyAdmin = new aws.iam.RolePolicyAttachment('amplifyAdmin', {
   role: amplifyRole.name,
-  policyArn: "arn:aws:iam::aws:policy/AdministratorAccess-Amplify",
+  policyArn: 'arn:aws:iam::aws:policy/AdministratorAccess-Amplify',
 });
-
 
 const app = new aws.amplify.App('personal-website', {
   name: 'personal-website',
@@ -80,14 +75,18 @@ const app = new aws.amplify.App('personal-website', {
   },
   iamServiceRoleArn: amplifyRole.arn,
 });
-const main = new aws.amplify.Branch('main', {
-  appId: app.id,
-  branchName: 'main',
-  stage: 'PRODUCTION',
-  enableAutoBuild: true,
-}, {
-  dependsOn: [amplifyAdmin]
-});
+const main = new aws.amplify.Branch(
+  'main',
+  {
+    appId: app.id,
+    branchName: 'main',
+    stage: 'PRODUCTION',
+    enableAutoBuild: true,
+  },
+  {
+    dependsOn: [amplifyAdmin],
+  },
+);
 
 const domainAssoc = new aws.amplify.DomainAssociation(
   'personal-website-domain',
@@ -101,6 +100,6 @@ const domainAssoc = new aws.amplify.DomainAssociation(
     ],
   },
   {
-    dependsOn: [main]
-  }
+    dependsOn: [main],
+  },
 );
