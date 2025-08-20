@@ -109,7 +109,7 @@ frontend:
     phases:
         preBuild:
             commands:
-              - nvm install 24
+              - nvm install 22
               - nvm use 22
               - corepack enable
               - corepack prepare pnpm@latest --activate 
