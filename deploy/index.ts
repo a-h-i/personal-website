@@ -7,6 +7,8 @@ const domain = cfg.require('domain');
 const posthogConfig = new pulumi.Config('posthog');
 const posthogKey = posthogConfig.requireSecret('key');
 const posthogHost = posthogConfig.require('host');
+const awsConfig = new pulumi.Config('aws');
+const awsRegion = awsConfig.require('region');
 
 const zone = aws.route53.getZone({ name: domain, privateZone: false });
 
@@ -44,7 +46,7 @@ const app = new aws.amplify.App('personal-website', {
   autoBranchCreationConfig: {
     enableAutoBuild: true,
   },
-  region: 'eu-west-3',
+  region: awsRegion,
 });
 
 const domainAssoc = new aws.amplify.DomainAssociation(

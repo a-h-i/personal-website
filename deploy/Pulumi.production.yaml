@@ -5,3 +5,4 @@ config:
   posthog:host: https://eu.i.posthog.com
   posthog:key:
     secure: AAABAO4KZjZNmmLWgemrx6FHfPwc/wLVnGuLPz43xgnuvJpp6YELhte0Qc/fMJ+XakyUNR2Q0hsRLy/O+xVyl2196IhJ0/oAF5Jg/U5o/w==
+  aws:region: eu-west-3
