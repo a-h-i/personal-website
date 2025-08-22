@@ -7,8 +7,8 @@ export default function About() {
       <div className='mt-4 space-y-4 leading-relaxed text-slate-300'>
         <p>
           I’m a developer focused on building reliable systems and delightful
-          interfaces. I care about developer experience, performance, metrics,
-          and shipping value without drama.
+          interfaces. I care about developer experience, performance,
+          and shipping value.
         </p>
         <p>
           Recently I’ve led teams shipping agentic AI features and scalable
