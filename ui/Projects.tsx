@@ -2,6 +2,14 @@ import ProjectItem, { ProjectItemProps } from '@/ui/ProjectItem';
 
 const projects: ProjectItemProps[] = [
   {
+    title: "Askier",
+    link: 'https://github.com/a-h-i/askier',
+    tags: ['C++', "image processing", 'opencv', 'Qt'],
+    description: `
+    Application for creating ASCII art from images, videos and live camera feeds.
+    `
+  },
+  {
     title: 'Midas Algo Trader',
     link: 'https://github.com/a-h-i/midas',
     tags: ['C++', 'financial', 'statistics', 'concurrent'],
