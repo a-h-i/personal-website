@@ -4,9 +4,10 @@ const projects: ProjectItemProps[] = [
   {
     title: "Askier",
     link: 'https://github.com/a-h-i/askier',
-    tags: ['C++', "image processing", 'opencv', 'Qt'],
+    tags: ['C++', "image processing", 'opencv', 'Qt', 'OpenCL', 'TBB'],
     description: `
     Application for creating ASCII art from images, videos and live camera feeds.
+    GPU accelerated ASCII art generation using OpenCL.
     `
   },
   {
