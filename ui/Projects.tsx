@@ -2,6 +2,17 @@ import ProjectItem, { ProjectItemProps } from '@/ui/ProjectItem';
 
 const projects: ProjectItemProps[] = [
   {
+    title: "Pedal",
+    link: "https://github.com/a-h-i/pedal",
+    tags: ['C++', 'audio', 'DSP', 'embedded'],
+    description: `
+    Realtime audio effects for guitar.
+    Provides equalizer, delay & tremolo effects with variable settings and realtime control.
+    Implemented using teensy4.1 microcontroller.
+    `
+
+  },
+  {
     title: "Askier",
     link: 'https://github.com/a-h-i/askier',
     tags: ['C++', "image processing", 'opencv', 'Qt', 'OpenCL', 'TBB'],
