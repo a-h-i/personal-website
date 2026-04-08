@@ -3,6 +3,19 @@ import { ArrowUpRight } from 'lucide-react';
 
 const experience: ExperienceItemProps[] = [
   {
+    role: 'Senior Software Engineer',
+    titleAlt: 'Remote',
+    company: 'Mindera',
+    summary: `
+           Limited time contract. Implemented frontend features for e-commerce loyalty program using Angularjs
+            `,
+    tags: [
+    'Angularjs',
+    ],
+    start: new Date('July 1, 2025'),
+    end: new Date('November 30, 2025'),
+  },
+  {
     role: 'Software Engineering Manager',
     titleAlt: 'Remote',
     company: 'Refound',
