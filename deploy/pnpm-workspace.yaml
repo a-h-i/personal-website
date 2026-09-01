@@ -1,0 +1,9 @@
+# Makes deploy/ its own pnpm workspace root so pnpm does not walk up to the site's
+# workspace and install that instead. Pulumi runs `pnpm install` here itself
+# (runtime.options.packagemanager in Pulumi.yaml), so this must work standalone.
+
+# pnpm 11 makes an un-decided dependency install script fatal. protobufjs (via
+# @pulumi/pulumi's gRPC stack) ships its generated bundles, and its script was
+# already being skipped under pnpm 10, so `false` keeps deploys behaving as before.
+allowBuilds:
+  protobufjs: false

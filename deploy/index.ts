@@ -109,10 +109,12 @@ frontend:
     phases:
         preBuild:
             commands:
-              - nvm install 22
-              - nvm use 22
+              - nvm install 24.20.0
+              - nvm use 24.20.0
               - corepack enable
-              - corepack prepare pnpm@latest --activate 
+              - corepack prepare pnpm@11.25.0 --activate
+              - node --version
+              - pnpm --version
               - pnpm install --frozen-lockfile
         build:
             commands:
@@ -150,7 +152,7 @@ const main = new aws.amplify.Branch(
   },
 );
 
-const domainAssoc = new aws.amplify.DomainAssociation(
+const _domainAssoc = new aws.amplify.DomainAssociation(
   'personal-website-domain',
   {
     appId: app.id,
