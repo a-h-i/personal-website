@@ -1,10 +1,29 @@
+import Image from 'next/image';
+import me from '@/public/me_wide.jpg';
+
 export default function About() {
   return (
     <section id='about' className='scroll-mt-24'>
       <h2 className='text-sm font-semibold tracking-widest text-emerald-400 uppercase'>
         About
       </h2>
-      <div className='mt-4 space-y-4 leading-relaxed text-slate-300'>
+      {/*
+        Kept at its native 16:9 rather than cropped square: a tight crop makes
+        the hand and pastry the subject, where the wide frame reads as a candid
+        environmental portrait. Framed like the site's cards so it belongs.
+        priority because this is the first section, so it is the LCP element.
+      */}
+      <div className='mt-6 overflow-hidden rounded-xl ring-1 ring-white/10'>
+        <Image
+          src={me}
+          alt='Ahmed H. Ismail on a city street, looking at the camera'
+          placeholder='blur'
+          priority
+          sizes='(min-width: 1152px) 704px, (min-width: 768px) 62vw, 100vw'
+          className='h-auto w-full'
+        />
+      </div>
+      <div className='mt-6 space-y-4 leading-relaxed text-slate-300'>
         <p>
           I’m Ahmed, a product-minded senior full-stack engineer and technical
           lead with over a decade of owning complex features end to end, across
