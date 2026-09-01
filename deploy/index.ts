@@ -8,7 +8,10 @@ const posthogConfig = new pulumi.Config('posthog');
 const posthogKey = posthogConfig.requireSecret('key');
 const posthogHost = posthogConfig.require('host');
 
-const zone = aws.route53.getZone({ name: domain, privateZone: false });
+// Not referenced: kept as an implicit assertion that the hosted zone exists
+// before Amplify is pointed at the domain. Underscore-prefixed to match the
+// eslint varsIgnorePattern.
+const _zone = aws.route53.getZone({ name: domain, privateZone: false });
 
 const acct = pulumi.output(aws.getCallerIdentity({})).accountId;
 const region = pulumi.output(aws.getRegion({})).region;
