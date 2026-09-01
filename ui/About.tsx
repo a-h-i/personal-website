@@ -1,30 +1,52 @@
 export default function About() {
   return (
-    <section id="about" className="scroll-mt-24">
-      <h2 className="text-sm font-semibold tracking-widest text-emerald-400 uppercase">
+    <section id='about' className='scroll-mt-24'>
+      <h2 className='text-sm font-semibold tracking-widest text-emerald-400 uppercase'>
         About
       </h2>
-      <div className="mt-4 space-y-4 leading-relaxed text-slate-300">
+      <div className='mt-4 space-y-4 leading-relaxed text-slate-300'>
         <p>
-          I’m Ahmed, a senior full-stack engineer and technical lead based in Porto.
-          I build dependable back ends and crisp, accessible interfaces. My focus is
-          developer experience, performance, and shipping real value.
+          I’m Ahmed, a product-minded senior full-stack engineer and technical
+          lead with over a decade of owning complex features end to end, across
+          modern web products and high-throughput services. I’m based in Porto
+          and engage internationally through my B2B LLC, with reliable overlap
+          for EU and US time zones.
         </p>
         <p>
-          Lately I’ve led teams delivering AI features like streaming chat with retrieval
-          and memory, and I previously designed high-throughput data pipelines and
-          dashboards. My day-to-day toolbox: React and Next.js with TypeScript, Node and
-          Nest on the server, Postgres or Timescale with Redis, plus Elasticsearch for
-          fast search and Kafka for messaging. I run on Docker and AWS, use Kubernetes
-          on EKS, automate infra with Pulumi, and ship via GitOps
-          with FluxCD.
+          I’ve led engineering teams of up to five, owning architecture, hiring
+          and delivery, and bootstrapped an engineering department from scratch
+          — CI/CD, testing standards, and the processes a growing team runs on.
+          Lately that has meant real-time and AI-powered products in React,
+          Next.js, Node.js and NestJS, using LangChain, LangGraph and Dify to
+          ship features with sensible guardrails.
         </p>
         <p>
-          I also have on-chain experience across Ethereum, Polygon, Aptos, and Tari —
-          primarily with ethers.js and viem. I have also worked professionally with Rust, C++, Python and Ruby.
-          I prefer small PRs, trunk-based development, strong
-          tests, and clear SLOs. I work globally through my Portuguese LLC with solid
-          overlap for EU and US teams.
+          On the data side: custom search relevance in Elasticsearch,
+          high-throughput messaging with Kafka and Redis Streams, advanced
+          modeling in Postgres and TimescaleDB, and Python pipelines for data
+          engineering, cleanup and reporting. I tune SQL, navigate traces and
+          profile hot paths, adding caching and purpose-built indexes where they
+          earn their keep — and I hold SSE and WebSocket interfaces to strict
+          p95 targets, verified through load testing and monitored in
+          production.
+        </p>
+        <p>
+          I run Kubernetes with GitOps via FluxCD, describe infrastructure in
+          Pulumi and Terraform, and back it with comprehensive automated testing
+          and deep observability through OpenTelemetry, Prometheus, Grafana,
+          Loki, Jaeger and Sentry. PostHog covers usage analytics, A/B testing,
+          feature flags and gradual rollouts, so decisions are driven by data
+          rather than opinion.
+        </p>
+        <p>
+          I’m security-minded by habit — input validation, authorization
+          boundaries, sensible rate limits, secret rotation and OWASP best
+          practices — and I have led ISO 27001 compliance work and shipped
+          payment systems under Central Bank of Egypt regulation. I also have
+          on-chain experience across Ethereum, Polygon, Aptos and Tari, mostly
+          with ethers.js and viem, and have worked professionally in C++, Python
+          and Ruby. I prefer small PRs, trunk-based development, strong tests
+          and clear SLOs.
         </p>
       </div>
     </section>

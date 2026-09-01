@@ -34,7 +34,7 @@ export default function ExperienceItem(props: ExperienceItemProps) {
       </p>
       <div className='mt-3 flex flex-wrap gap-2'>
         {props.tags.map((tag) => (
-          <TechTag key={tag} name={tag} />
+          <TechTag key={tag} name={tag} exact />
         ))}
       </div>
     </li>

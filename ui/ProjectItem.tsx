@@ -23,7 +23,7 @@ export default function ProjectItem(props: ProjectItemProps) {
       <p className='mt-2 text-sm text-slate-300'>{props.description}</p>
       <div className='mt-3 flex flex-wrap gap-2'>
         {props.tags.map((tag) => (
-          <TechTag key={tag} name={tag} />
+          <TechTag key={tag} name={tag} exact />
         ))}
       </div>
     </a>

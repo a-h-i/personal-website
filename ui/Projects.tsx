@@ -2,29 +2,28 @@ import ProjectItem, { ProjectItemProps } from '@/ui/ProjectItem';
 
 const projects: ProjectItemProps[] = [
   {
-    title: "Pedal",
-    link: "https://github.com/a-h-i/pedal",
-    tags: ['C++', 'audio', 'DSP', 'embedded'],
+    title: 'Pedal',
+    link: 'https://github.com/a-h-i/pedal',
+    tags: ['C++', 'Audio', 'DSP', 'Embedded'],
     description: `
     Realtime audio effects for guitar.
     Provides equalizer, delay & tremolo effects with variable settings and realtime control.
     Implemented using teensy4.1 microcontroller.
-    `
-
+    `,
   },
   {
-    title: "Askier",
+    title: 'Askier',
     link: 'https://github.com/a-h-i/askier',
-    tags: ['C++', "image processing", 'opencv', 'Qt', 'OpenCL', 'TBB'],
+    tags: ['C++', 'Image processing', 'OpenCV', 'Qt', 'OpenCL', 'TBB'],
     description: `
     Application for creating ASCII art from images, videos and live camera feeds.
     GPU accelerated ASCII art generation using OpenCL.
-    `
+    `,
   },
   {
     title: 'Midas Algo Trader',
     link: 'https://github.com/a-h-i/midas',
-    tags: ['C++', 'financial', 'statistics', 'concurrent'],
+    tags: ['C++', 'Financial', 'Statistics', 'Concurrent'],
     description: `
         Algorithmic trader using IBKR API for momentum exploit. Trades futures and high volatility stocks
         `,
@@ -32,14 +31,14 @@ const projects: ProjectItemProps[] = [
   {
     title: 'SPDX Parser',
     description:
-      'Python parser libraries for the SPDX format. Done as part of google summer of code 2014',
-    link: 'https://github.com/ah450/sdpx-tools-python',
+      'Python parser libraries for the SPDX format. Built as part of Google Summer of Code 2014.',
+    link: 'https://github.com/ah450/spdx-tools-python',
     tags: ['Python'],
   },
   {
     title: 'Proteus',
     description: `
-        Speech recognition library generator based on pocketsphinx for multiple 
+        Speech recognition library generator based on pocketsphinx for multiple
         `,
     tags: ['C++'],
     link: 'https://github.com/ah450/proteus',
@@ -55,7 +54,7 @@ const projects: ProjectItemProps[] = [
   {
     title: 'SIFT',
     link: 'https://github.com/ah450/SIFT',
-    tags: ['C++', 'computer vision', 'image processing'],
+    tags: ['C++', 'Computer vision', 'Image processing'],
     description: `
         SIFT feature detector and descriptor.
         `,
@@ -63,14 +62,14 @@ const projects: ProjectItemProps[] = [
   {
     title: 'Ngmedia',
     link: 'https://github.com/ah450/ngmedia',
-    tags: ['Javascript', 'Angularjs'],
+    tags: ['JavaScript', 'AngularJS'],
     description:
       'Angular directive to remove elements based on media query match',
   },
   {
     title: 'Rootkit',
     link: 'https://github.com/ah450/rootkit',
-    tags: ['C++', 'kernel', 'linux'],
+    tags: ['C++', 'Kernel', 'Linux'],
     description: 'Rootkit for linux kernel 3.x',
   },
   {
@@ -85,7 +84,7 @@ const projects: ProjectItemProps[] = [
         Java student assignment submission, evaluator and tracker for the German University in Cairo
         `,
     link: 'https://github.com/ah450/evaluator',
-    tags: ['CoffeeScript', 'Javascript', 'Ruby', 'Ruby on Rails'],
+    tags: ['CoffeeScript', 'JavaScript', 'Ruby', 'Ruby on Rails'],
   },
 ];
 

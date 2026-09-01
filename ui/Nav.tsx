@@ -11,6 +11,10 @@ const navItems = [
     href: '#about',
   },
   {
+    name: 'Stack',
+    href: '#stack',
+  },
+  {
     name: 'Experience',
     href: '#experience',
   },
@@ -28,24 +32,23 @@ const navItems = [
   },
 ];
 
+const sectionIds = navItems.map((item) => item.href.replace('#', ''));
+
 export default function Nav() {
-  const activeId = useScrollSpy(
-    navItems.map((item) => item.href.replace('#', '')),
-  );
+  const activeId = useScrollSpy(sectionIds);
   return (
     <aside className='lg:sticky lg:top-16 lg:self-start'>
       <h1 className='text-3xl font-bold tracking-tight sm:text-4xl'>
         Ahmed H. Ismail
       </h1>
       <p className='mt-2 text-slate-400'>
-        Technical Lead • Full‑stack Engineer
+        Senior Full‑stack Engineer • Technical Lead
       </p>
       <p className='mt-4 max-w-sm text-slate-300'>
-        I am a senior software engineer with over 10 years of experience. With
-        experience in full-stack development, system architecture and scalable
-        data platforms. I have a passion for building scalable, reliable and
-        performant systems. I work across a wide range of technologies from
-        Node.js/React to C++ and Rust.
+        Over a decade owning complex features end to end — real-time and
+        AI-powered web products, high-throughput services, and the Kubernetes
+        platforms underneath them. Based in Porto, working internationally
+        through my Portuguese LLC.
       </p>
       <nav className='mt-10 hidden lg:block'>
         <ul className='space-y-2'>
@@ -97,7 +100,7 @@ export default function Nav() {
           <Image src='/linkedin.png' alt='linkedin' width={16} height={16} />
         </a>
         <a
-          href='mailto:ah3md.hisham@gmail.com'
+          href='mailto:ahm3d.hisham@gmail.com'
           aria-label='Email'
           className='rounded-md bg-emerald-500 p-2 ring-1 ring-white/10 transition hover:text-slate-200 hover:ring-white'
         >

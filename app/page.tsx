@@ -1,4 +1,5 @@
 import About from '@/ui/About';
+import Stack from '@/ui/Stack';
 import Experience from '@/ui/Experience';
 import Certification from '@/ui/Certification';
 import Projects from '@/ui/Projects';
@@ -8,6 +9,7 @@ export default function Home() {
   return (
     <section className='space-y-24'>
       <About />
+      <Stack />
       <Experience />
       <Projects />
       <Certification />

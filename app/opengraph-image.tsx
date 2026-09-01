@@ -17,7 +17,7 @@ export default async function OpengraphImage() {
         }}
       >
         <SiteIcon />
-        <p>Ahmed Ismail — Senior Software Developer</p>
+        <p>Ahmed Ismail — Senior Full-stack Engineer</p>
       </div>
     ),
   );

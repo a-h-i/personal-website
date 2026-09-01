@@ -5,16 +5,16 @@ import CertificationItem, {
 const certs: CertificationItemProps[] = [
   {
     description: `
-        Comprehensive specialization for project management and how it’s done at google.
+        Comprehensive specialization for project management and how it’s done at Google.
         Not only qualifies me to work as a project manager but helps make me a much better technical lead.
         `,
     title: 'Google Project Management Certification',
     link: 'https://coursera.org/share/a57f0a8091446714241be607c548701d',
   },
   {
-    title: 'Postgresql for everyone certification',
+    title: 'PostgreSQL for Everyone Certification',
     description: `
-        Postgresql techniques and inner workings.
+        PostgreSQL techniques and inner workings.
         Most of the time just using the ORM for everything doesn’t cut it.
         `,
     link: 'https://coursera.org/share/dc3ed42f48dbfb3a7ad0f375fd82fc01',

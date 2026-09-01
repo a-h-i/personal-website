@@ -19,12 +19,12 @@ export default function CertificationItem(props: CertificationItemProps) {
             <LinkIcon className='inline-block h-4 w-4' /> Certificate
           </a>
         </div>
-        {props.description && (
-          <p className='mt-3 text-sm leading-relaxed text-slate-300'>
-            {props.description}
-          </p>
-        )}
       </div>
+      {props.description && (
+        <p className='mt-3 text-sm leading-relaxed text-slate-300'>
+          {props.description}
+        </p>
+      )}
     </li>
   );
 }
