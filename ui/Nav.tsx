@@ -93,6 +93,18 @@ export default function Nav() {
           <Image src='/github.svg' alt='github' width={16} height={16} />
         </a>
         <a
+          href='https://stackoverflow.com/users/1345339/a-h'
+          aria-label='Stack Overflow'
+          className='rounded-md bg-emerald-500 p-2 ring-1 ring-white/10 transition hover:text-slate-200 hover:ring-white'
+        >
+          <Image
+            src='/stackoverflow.svg'
+            alt='stack overflow'
+            width={16}
+            height={16}
+          />
+        </a>
+        <a
           href='https://www.linkedin.com/in/ah450/'
           aria-label='LinkedIn'
           className='rounded-md bg-emerald-500 p-2 ring-1 ring-white/10 transition hover:text-slate-200 hover:ring-white'
