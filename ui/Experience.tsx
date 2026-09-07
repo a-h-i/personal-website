@@ -1,5 +1,6 @@
 import ExperienceItem, { ExperienceItemProps } from '@/ui/ExperienceItem';
 import { ArrowUpRight } from 'lucide-react';
+import { RESUME_HREF } from '@/lib/resume';
 
 const experience: ExperienceItemProps[] = [
   {
@@ -198,7 +199,7 @@ export default function Experience() {
       </ol>
       <div className='mt-4'>
         <a
-          href='Ahmed_Ismail_resume.pdf'
+          href={RESUME_HREF}
           className='inline-flex items-center gap-2 text-sm text-emerald-300 hover:text-emerald-200'
         >
           View full résumé <ArrowUpRight className='h-4 w-4' />

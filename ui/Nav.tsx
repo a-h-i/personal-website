@@ -4,6 +4,7 @@ import { Mail, FileUser } from 'lucide-react';
 import Image from 'next/image';
 import useScrollSpy from '@/lib/hooks/useScrollSpy.hook';
 import { clsx } from 'clsx';
+import { RESUME_HREF } from '@/lib/resume';
 
 const navItems = [
   {
@@ -126,7 +127,7 @@ export default function Nav() {
           <Image alt='medium' src='/medium.svg' width={16} height={16} />
         </a>
         <a
-          href='Ahmed_Ismail_resume.pdf'
+          href={RESUME_HREF}
           aria-label='Resume'
           className='rounded-md bg-emerald-500 p-2 ring-1 ring-white/10 transition hover:text-slate-200 hover:ring-white'
         >
