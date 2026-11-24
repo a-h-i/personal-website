@@ -50,12 +50,15 @@ export default function About() {
           production.
         </p>
         <p>
-          I run Kubernetes with GitOps via FluxCD, describe infrastructure in
-          Pulumi and Terraform, and back it with comprehensive automated testing
-          and deep observability through OpenTelemetry, Prometheus, Grafana,
-          Loki, Jaeger and Sentry. PostHog covers usage analytics, A/B testing,
-          feature flags and gradual rollouts, so decisions are driven by data
-          rather than opinion.
+          I run Kubernetes with GitOps via FluxCD, in the cloud and on bare
+          metal: servers set up with Ansible, Talos Linux nodes created with
+          OpenTofu, Cilium networking with default-deny policies, and secrets
+          encrypted in Git with SOPS. In the cloud I describe infrastructure in
+          Pulumi and Terraform. I back it all with comprehensive automated
+          testing and deep observability through OpenTelemetry, Prometheus,
+          Grafana, Mimir, Loki, Tempo, Jaeger and Sentry. PostHog covers usage
+          analytics, A/B testing, feature flags and gradual rollouts, so
+          decisions are driven by data rather than opinion.
         </p>
         <p>
           I’m security-minded by habit — input validation, authorization

@@ -4,14 +4,15 @@ import { RESUME_HREF } from '@/lib/resume';
 
 const experience: ExperienceItemProps[] = [
   {
-    role: 'Senior Full Stack Developer',
+    role: 'Senior Full Stack & Platform Engineer',
     company: 'Apadua GmbH',
     titleAlt: 'Remote',
     summary: `
             Building a Django backend and Next.js frontend alongside a FastAPI microservice, with Dify orchestrating AI workflows across the product.
             Delivered collaborative editing so several people can work on the same project at once, with undo/redo and full version history, and own the AI knowledge base behind it — vector database management and the ingestion pipelines that feed it.
-            I own the Azure platform end to end: Kubernetes managed through Pulumi IaC, a highly available CloudNativePG cluster, persistent Redis and RabbitMQ, and Celery processing with exactly-once semantics, dead letter queues and Redis-based distributed locking.
-            Established the observability stack, drove PostgreSQL query optimization off the back of it, wrote the DevOps runbooks, and led security audits and ISO 27001 compliance work.
+            Lead author of the platform moving Apadua off Azure onto its own bare-metal servers at Hetzner: Ansible installs and hardens each server with encrypted disks, OpenTofu creates Talos Linux VMs on KVM, and FluxCD deploys everything from Git — three clusters on five servers within its first month.
+            It runs Cilium with WireGuard encryption and default-deny network policies, Envoy Gateway, local LVM storage and SOPS-encrypted secrets, a multi-tenant Grafana LGTM cluster (Mimir, Loki, Tempo, Alloy) alerting to Slack, and GitHub Actions on self-hosted autoscaling runners. Every change passes static checks and ~570 tests before it deploys, and every decision is recorded with its rationale.
+            Before the move I ran the Azure platform end to end: Kubernetes through Pulumi IaC, a highly available CloudNativePG cluster, Redis, RabbitMQ and Celery with exactly-once semantics and dead letter queues. I set up its observability, tuned PostgreSQL off the back of it, and led security audits and ISO 27001 compliance work.
             `,
     tags: [
       'Django',
@@ -20,15 +21,22 @@ const experience: ExperienceItemProps[] = [
       'Python',
       'TypeScript',
       'Dify',
-      'Azure',
       'Kubernetes',
+      'Talos Linux',
+      'Hetzner',
+      'OpenTofu',
+      'Ansible',
+      'FluxCD',
+      'Cilium',
+      'SOPS',
+      'Grafana LGTM',
+      'Azure',
       'Pulumi',
       'CloudNativePG',
       'pgvector',
       'Celery',
       'RabbitMQ',
       'Redis',
-      'Grafana',
       'Sentry',
     ],
     start: new Date('February 1, 2026'),
