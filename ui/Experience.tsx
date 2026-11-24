@@ -8,11 +8,14 @@ const experience: ExperienceItemProps[] = [
     company: 'Apadua GmbH',
     titleAlt: 'Remote',
     summary: `
-            Building a Django backend and Next.js frontend alongside a FastAPI microservice, with Dify orchestrating AI workflows across the product.
-            Delivered collaborative editing so several people can work on the same project at once, with undo/redo and full version history, and own the AI knowledge base behind it — vector database management and the ingestion pipelines that feed it.
-            Lead author of the platform moving Apadua off Azure onto its own bare-metal servers at Hetzner: Ansible installs and hardens each server with encrypted disks, OpenTofu creates Talos Linux VMs on KVM, and FluxCD deploys everything from Git — three clusters on five servers within its first month.
-            It runs Cilium with WireGuard encryption and default-deny network policies, Envoy Gateway, local LVM storage and SOPS-encrypted secrets, a multi-tenant Grafana LGTM cluster (Mimir, Loki, Tempo, Alloy) alerting to Slack, and GitHub Actions on self-hosted autoscaling runners. Every change passes static checks and ~570 tests before it deploys, and every decision is recorded with its rationale.
-            Before the move I ran the Azure platform end to end: Kubernetes through Pulumi IaC, a highly available CloudNativePG cluster, Redis, RabbitMQ and Celery with exactly-once semantics and dead letter queues. I set up its observability, tuned PostgreSQL off the back of it, and led security audits and ISO 27001 compliance work.
+            Build the product on a Django backend, a Next.js frontend and a FastAPI AI service, with most AI features on Dify. Delivered collaborative editing with undo/redo and full version history.
+            Designed, led and built the staffing plugin: clients tender positions and vendors answer live with candidates. About 64 PRs in 10 slices, with cross-tenant Celery sync that never leaks hidden commercial fields.
+            Moved Apadua's AI onto self-hosted Dify and built its knowledge-base platform: product and staffing data in Dify datasets, file ingestion, vendor search and streaming chat, with dashboards and network policies.
+            Hardened authentication across invitation, activation, password reset and SSO in a 10-PR stack, and built browser-to-database tracing with Grafana Faro and OpenTelemetry.
+            Lead author of the platform moving Apadua off Azure onto its own bare metal at Hetzner, defined entirely in Git: three Kubernetes clusters on five servers in its first month. Built with Ansible, Talos Linux on KVM via OpenTofu, FluxCD, Cilium with WireGuard and default-deny policies, and SOPS.
+            A multi-tenant observability cluster on the Grafana LGTM stack with Alertmanager to Slack, and self-hosted autoscaling GitHub Actions runners. Every change passes 24 static checks and about 570 tests.
+            Before the move, owned the Azure platform: Kubernetes through Pulumi, HA CloudNativePG, Redis, RabbitMQ and exactly-once Celery. Led security audits and ISO 27001 work.
+            Review teammates' PR stacks against specs and recorded decisions; 256 merged PRs in ten months.
             `,
     tags: [
       'Django',
@@ -37,6 +40,7 @@ const experience: ExperienceItemProps[] = [
       'Celery',
       'RabbitMQ',
       'Redis',
+      'OpenTelemetry',
       'Sentry',
     ],
     start: new Date('February 1, 2026'),

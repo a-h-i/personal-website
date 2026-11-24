@@ -96,7 +96,7 @@ const stack: StackGroup[] = [
   },
   {
     label: 'AI',
-    items: ['LangChain', 'LangGraph', 'Dify'],
+    items: ['Dify', 'LangChain', 'LangGraph'],
   },
 ];
 

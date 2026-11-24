@@ -36,8 +36,9 @@ export default function About() {
           and delivery, and bootstrapped an engineering department from scratch
           — CI/CD, testing standards, and the processes a growing team runs on.
           Lately that has meant real-time and AI-powered products in React,
-          Next.js, Node.js and NestJS, using LangChain, LangGraph and Dify to
-          ship features with sensible guardrails.
+          Next.js, Node.js and NestJS, with Dify workflows and knowledge bases
+          in production, and LangChain and LangGraph, shipped with sensible
+          guardrails.
         </p>
         <p>
           On the data side: custom search relevance in Elasticsearch,
