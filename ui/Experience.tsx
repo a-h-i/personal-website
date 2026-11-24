@@ -62,7 +62,7 @@ const experience: ExperienceItemProps[] = [
     company: 'Refound',
     titleAlt: 'Remote',
     summary: `
-            Lead architect and team lead on a fixed-term contract building an agentic leadership coaching platform, serving 5k active users on React, Next.js and Python.
+            Lead architect and team lead on a fixed-term contract building an agentic leadership coaching platform, serving 5k active users on React, Next.js and Python, with cooperating LangGraph agents in production using MCP and custom tools.
             Led a team of 5 engineers, bootstrapped the engineering department and the processes it runs on, introduced the CI/CD pipeline, and held high test coverage with Vitest and Playwright.
             `,
     tags: [
@@ -74,6 +74,7 @@ const experience: ExperienceItemProps[] = [
       'Quart',
       'NestJS',
       'LangGraph',
+      'MCP',
       'AWS',
       'Kubernetes',
       'Docker',
