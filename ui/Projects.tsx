@@ -2,6 +2,15 @@ import ProjectItem, { ProjectItemProps } from '@/ui/ProjectItem';
 
 const projects: ProjectItemProps[] = [
   {
+    title: 'Bugsink App for Grafana',
+    link: 'https://github.com/a-h-i/grafana-bugsink-app',
+    tags: ['Go', 'TypeScript', 'React', 'Grafana', 'Observability'],
+    description: `
+    A Grafana app plugin for Bugsink error tracking.
+    Browse and triage issues inside Grafana, and jump from an error to its trace in Tempo and its logs in Loki.
+    `,
+  },
+  {
     title: 'Pedal',
     link: 'https://github.com/a-h-i/pedal',
     tags: ['C++', 'Audio', 'DSP', 'Embedded'],
