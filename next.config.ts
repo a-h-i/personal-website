@@ -22,6 +22,8 @@ const resumeVersion = createHash('sha256')
 const nextConfig: NextConfig = {
   // Inlined at build time, so both server and client components can read it.
   env: { NEXT_PUBLIC_RESUME_VERSION: resumeVersion },
+  // Stops next dev from writing AGENTS.md and CLAUDE.md into the repo.
+  agentRules: false,
 };
 
 export default nextConfig;
