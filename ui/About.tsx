@@ -31,9 +31,10 @@ export default function About() {
           with reliable overlap for EU and US time zones.
         </p>
         <p>
-          Most of my career has been in startups, and that’s where I do my best
-          work: real accountability, room to take initiative and a fast pace. I
-          like the controlled chaos and the pressure that comes with it.
+          Most of my career has been in startups and in companies that run like
+          one, whatever their size: real accountability, room to take initiative
+          and a fast pace. That’s where I do my best work, and I like the
+          controlled chaos and the pressure that comes with it.
         </p>
         <p>
           I’ve led engineering teams of up to five, owning architecture, hiring

@@ -6,7 +6,7 @@ const experience: ExperienceItemProps[] = [
   {
     role: 'Senior Full Stack & Platform Engineer',
     company: 'Apadua GmbH',
-    titleAlt: 'Remote',
+    titleAlt: 'Remote · B2B SaaS, ~15 people',
     summary: `
             Build the product on a Django backend, a Next.js frontend and a FastAPI AI service, with most AI features on Dify. Delivered collaborative editing with undo/redo and full version history.
             Designed, led and built the staffing plugin: clients tender positions and vendors answer live with candidates. About 64 PRs in 10 slices, with cross-tenant Celery sync that never leaks hidden commercial fields.
@@ -60,7 +60,7 @@ const experience: ExperienceItemProps[] = [
   {
     role: 'Software Engineering Manager',
     company: 'Refound',
-    titleAlt: 'Remote',
+    titleAlt: 'Remote · Leadership coaching company, ~10 people',
     summary: `
             Lead architect and team lead on a fixed-term contract building an agentic leadership coaching platform, serving 5k active users on React, Next.js and Python, with cooperating LangGraph agents in production using MCP and custom tools.
             Led a team of 5 engineers, bootstrapped the engineering department and the processes it runs on, introduced the CI/CD pipeline, and held high test coverage with Vitest and Playwright.
@@ -87,7 +87,7 @@ const experience: ExperienceItemProps[] = [
   {
     role: 'Technical Lead',
     company: 'Tari Labs',
-    titleAlt: 'Remote',
+    titleAlt: 'Remote · Web3 startup, ~40 people',
     summary: `
             Spearheaded the architecture and led a team of engineers building a cross-chain Web3 data aggregation platform — a highly scalable NestJS microservices backend with PostgreSQL as the primary source of truth.
             Architected the real-time, event-driven analysis layer on Redis Streams, scaling to millions of requests and events per minute with low-latency, exactly-once task execution.
@@ -130,7 +130,7 @@ const experience: ExperienceItemProps[] = [
   {
     role: 'Senior Developer',
     company: 'QMedic',
-    titleAlt: 'Remote',
+    titleAlt: 'Remote · Medical IoT startup, ~20 people',
     summary: `
             QMedic designs its own wearable medical IoT devices. I engineered the internal telemetry and analytics infrastructure in Node.js, capturing and processing the data those devices generate.
             Built Python pipelines to clean, normalize and validate raw device telemetry before ingestion so downstream analytics ran on trustworthy data, and designed a scalable DynamoDB data layer to store and query it.
@@ -166,7 +166,7 @@ const experience: ExperienceItemProps[] = [
   {
     role: 'Software Engineer',
     company: 'Paymob',
-    titleAlt: 'Cairo, Egypt',
+    titleAlt: 'Cairo, Egypt · Seed-stage fintech startup, ~15 people',
     summary: `
             Built Python/Flask backend services for electronic payments and mobile wallets, operating under Central Bank of Egypt regulatory compliance requirements.
             Delivered integrations with Arab African International Bank and Vodafone Cash, translating partner and regulatory specifications into working payment flows.
@@ -180,7 +180,7 @@ const experience: ExperienceItemProps[] = [
   {
     role: 'Software Engineer',
     company: 'Eventtus',
-    titleAlt: 'Cairo, Egypt',
+    titleAlt: 'Cairo, Egypt · Seed-stage event-tech startup, ~12 people',
     summary: `
             Event organization and tracking platform. Modernized an aging codebase from PHP to Ruby on Rails, incrementally — piecewise modernization with a gradual rollout of services rather than a rewrite.
             `,
