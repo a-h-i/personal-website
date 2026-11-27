@@ -48,8 +48,8 @@ export default function Nav() {
       <p className='mt-4 max-w-sm text-slate-300'>
         Over a decade owning complex features end to end — real-time and
         AI-powered web products, high-throughput services, and the Kubernetes
-        platforms underneath them. Based in Porto, working internationally
-        through my Portuguese LLC.
+        platforms underneath them. Based in Porto, working remotely across EU
+        and US time zones.
       </p>
       <nav className='mt-10 hidden lg:block'>
         <ul className='space-y-2'>

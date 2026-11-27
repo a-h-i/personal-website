@@ -121,7 +121,7 @@ const experience: ExperienceItemProps[] = [
     summary: `
             Delivered full-stack web projects on a contract basis, including continued engagements with Dreidev alongside direct freelance clients.
             Worked primarily in React and Node.js, with several projects built on Python and Django, owning delivery from requirements through deployment.
-            Managed client relationships, scoping and delivery independently — the groundwork for the B2B contracting practice I run today through my Portuguese LLC.
+            Managed client relationships, scoping and delivery independently.
             `,
     tags: ['React', 'Node.js', 'Python', 'Django'],
     start: new Date('July 1, 2019'),

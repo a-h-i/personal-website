@@ -49,7 +49,6 @@ export const metadata: Metadata = {
     'Docker',
     'LangGraph',
     'Developer',
-    'Freelancer',
     'Porto',
     'Portugal',
   ],

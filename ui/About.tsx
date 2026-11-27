@@ -27,9 +27,13 @@ export default function About() {
         <p>
           I’m Ahmed, a product-minded senior full-stack engineer and technical
           lead with over a decade of owning complex features end to end, across
-          modern web products and high-throughput services. I’m based in Porto
-          and engage internationally through my B2B LLC, with reliable overlap
-          for EU and US time zones.
+          modern web products and high-throughput services. I’m based in Porto,
+          with reliable overlap for EU and US time zones.
+        </p>
+        <p>
+          Most of my career has been in startups, and that’s where I do my best
+          work: real accountability, room to take initiative and a fast pace. I
+          like the controlled chaos and the pressure that comes with it.
         </p>
         <p>
           I’ve led engineering teams of up to five, owning architecture, hiring
