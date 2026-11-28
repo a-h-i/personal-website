@@ -3,11 +3,11 @@
   "main": "index.ts",
   "devDependencies": {
     "@types/node": "^24",
-    "typescript": "^5.0.0"
+    "typescript": "^6.0.3"
   },
   "dependencies": {
-    "@pulumi/aws": "^7.44.0",
-    "@pulumi/pulumi": "^3.260.0"
+    "@pulumi/aws": "^7.55.0",
+    "@pulumi/pulumi": "^3.278.0"
   },
   "packageManager": "pnpm@11.25.0"
 }
