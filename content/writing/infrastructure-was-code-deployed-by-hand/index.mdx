@@ -1,0 +1,102 @@
+---
+title: Our infrastructure was code. We still deployed by hand
+subtitle: Is GitOps more than just IaC?
+summary: Our infrastructure was fully described in code, and deploys still waited on a person with a laptop. What went wrong, why it wasn't the tool's fault, and the measurable goals we set before choosing a fix.
+date: 2026-11-28
+series:
+  name: From a hand-run cloud to our own bare metal
+  part: 1
+---
+
+import ApplyVsReconcile from './ApplyVsReconcile';
+
+I was assigned to review a PR on the infrastructure repository, a small change adjusting some replica counts and adding a bit of capacity to our production cluster, something we had already discussed and agreed upon. The diff showed a couple of values in a config file. A GitHub Action had posted the preview as a comment, and it showed exactly what I expected. I approved it, and it was merged.
+
+Then nothing happened.
+
+The change sat in the repository until one of the few people holding production credentials applied it by hand from their machine. And the preview I had approved? It had run against development, the only environment the workflow had credentials for. What the change would actually do to production was only seen at apply time, on one person's machine, long after the review was over.
+
+**Nothing was broken. This was the process working as intended, and that was the problem.**
+
+## A perfectly sensible setup
+
+We are a company providing a B2B SaaS product, at the time hosted on AKS, Azure's managed Kubernetes, and using infrastructure as code (IaC) through Pulumi to manage most of our infrastructure, across three environments, Development, Staging and Production. Pretty standard stuff, right?
+
+While our product is unique, it has no bespoke or nontraditional deployment constraints as far as platform and infrastructure are concerned.
+
+One Pulumi program described everything we needed (DNS, the clusters, the database, caches, object storage, etc.) with different stack configuration files for each of our environments. To change any environment, an engineer ran `pulumi preview` and `pulumi up` targeting a specific stack from their machine. Of course not every developer had access to every environment, and that part is how it is supposed to be.
+
+Now to be fair this is a completely sensible setup, sure it is not perfect nor does it need to be everyone's perfect cup of tea. When a company is starting out with a new product and engineers wearing multiple hats, this approach is honestly better than a lot of what's out there. The first priority is getting the product out there and selling it. Just like in programming you start with something simple that works, and you improve it.
+
+As someone inheriting this setup when I joined the company, I felt like I was in a position to offer a different perspective on the setup as I had not grown accustomed to the friction and pain points of it.
+
+## Where it hurt
+
+At this point I knew I was experiencing the symptoms of a process we had outgrown, however I had not yet defined the problem, moreover this was all from my viewpoint. It was entirely possible that the rest of the team did not suffer from this or it did not impact them enough to consider.
+
+So I started raising the issue in meetings, mentioning things that I found strange and seeing if the team shared similar sentiments. I wanted to gauge if this was something impacting them as well. If they had an issue or two off the top of their heads that affected their work, then we could measure the impact in order to set a suitable priority and scope for any possible solution or replacement.
+
+I collected their feedback along with my own, which mostly fell into the following themes.
+
+**The process ended with a human reconciler.** Changes, regardless of their type or urgency, waited for one of a few engineers with the required credentials to apply them, stalling processes such as QA or a hotfix. Now let me be clear, the issue was not requiring sign-off before a release, it was that even after sign-off from the lead, engineering manager or any part of the chain, nothing happened at all until a manual step was taken.
+
+**It was difficult to tell what the desired state of a cluster was, and the PR diff didn't carry the full picture of the change.** Our deployment started as a nice, easy-to-reason-about Pulumi program, then suddenly the configurations for different environments were no longer a simple substitution of values based on the stack selected such as a number of replicas or a hostname. Refactoring efforts were undertaken and new modules appeared introducing more complexity and coupling. Meaning the diff alone was not enough and now you needed institutional knowledge of the infrastructure app as if it was our primary product. At least our app has documentation and tests, the infrastructure did not. The state tracked in Git was also not linked to the state of the infrastructure. Nginx config changes may have rolled out to production along with a hotfix image tag update before they were applied to development or staging. Yet as far as the repo was concerned they were part of what development and staging declared to be their state.
+
+**It was difficult to scale.** There was no telemetry yet, so there was no way to right-size anything apart from gut feeling. Our node pools were manually scaled when deemed appropriate, i.e. when pods were OOM-killed or unable to be scheduled, and the node sizes for the pools suffered from the same lack of telemetry and were fixed per pool. If we needed a different node size, we would create a new pool and replace the existing one, through a manual process. How do you size without data? _You scale for the worst case and leave it, with the bill piling up._
+
+**Our CI was stalling the process and we could not trust its results.** This was perhaps the most impactful on the team, as it meant all of our PRs were blocked waiting on slow workflows and long queues. The load was high for our self-hosted runners, leading to timeouts, stemming from the same hand-sized capacity with no data, relying on gut feeling. People resorted to running their jobs during the night, outside of work hours when there was less competition for capacity. And you were never really sure if it was catching a bug or just unreliable, it was doing the opposite of speeding up our integration and delivery. When we later measured it, one in seven backend test runs had been re-run by hand.
+
+**People took the path of least resistance, Git and the clusters diverged and nothing existed to bring them back in sync.** 'Quick' and 'temporary' changes were applied using kubectl which would of course lead to Pulumi losing ownership of that value and refusing to apply a new state. And I think we all know how quickly a temporary change in software can become permanent. _This was not the fault of the team, IaC was supposed to facilitate the process not become a barrier._
+
+**The different clusters were strongly coupled.** Say you deployed an experiment, or radically changed the configuration of something in development, and while still evaluating it wanted to just update an image tag on production to release a hotfix or a feature. _The experimental changes wanted to tag along to production as well,_ leading to strange procedures of reverting commits locally only, then applying a 'clean' state to production and then just getting rid of your local branch, does anyone really want that process?
+
+## Declared in Git, never reconciled
+
+Analyzing the feedback of the team, I started mapping the issues reported to likely causes and gaps in our stack and process.
+
+**We had used Pulumi to declare what we wanted, but there was nothing tying our declaration to reality.** We were missing the ops part of GitOps.
+
+We had of course tried the obvious fix, we added a workflow to apply changes merged into main. We started with just the development environment to test it out. It lasted about three weeks, it was conflicting with the manually applied changes and ended up doing very little applying. We also didn't fully trust it to automatically apply things to production, as the diffs we were reviewing in the PRs did not carry the whole story. It also could never truly bridge the gap, it was only triggered by a code change, never by cluster state.
+
+We needed a controller to continuously reconcile what Git declared with what the cluster was running. We already trusted a similar control loop. Kubernetes itself is a series of control loops that orchestrate pods and keep them running. We trusted those loops to keep our pods running, but we had never given one the job of deciding what should be running. That is what GitOps adds to infrastructure as code: Git declares, and a controller in the cluster keeps reality matching it.
+
+<Figure wide caption='Apply on demand against continuous reconciliation'>
+  <ApplyVsReconcile />
+</Figure>
+
+**The program was more powerful than the job needed.** Somewhere along the way we drifted into implementing a complex and powerful program for managing the infrastructure. We would have been better served by following the [rule of least power](https://en.wikipedia.org/wiki/Rule_of_least_power), if we had kept things simple and stuck to a descriptive model it would have made it much easier to understand what the desired state was at a glance, no tracing required, keeping PR reviews simple and diffs honest.
+
+**Nothing tied our capacity to our actual usage.** I had earlier added an observability stack, so for the first time we had telemetry from both the applications and the platform. It showed what we suspected, capacity set by hand for the worst day, and a bill out of proportion to our traffic. For an application with no GPUs and no live or large media streaming, that made no sense, and it would only get worse as we grew.
+
+**Our CI was never declared at all.** It wasn't managed by Pulumi. It was deployed by hand on a cluster left over from an environment that was being retired. A few manifests were in the repo, the rest lived as knowledge, not code. It was sized by hand like everything else, while its load kept growing as AI-assisted workflows multiplied our output. Capacity was only half of the problem, flaky tests and image builds that rebuilt everything were ours to fix, whatever they ran on.
+
+## What "fixed" would mean
+
+Before choosing a fix, I wanted us to agree on what "fixed" would mean. I like to separate outputs from outcomes: a tool or a pipeline is an output, the means we bet on. The outcome is what actually changes for the team, and it should be measurable. Here is our first draft of those outcomes:
+
+| Goal                                                             | What it means                                                                                     |
+| ---------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
+| Zero manual steps to deploy to any environment                   | Review, QA and release approvals stay. After them, nobody performs a purely mechanical step.      |
+| A PR merged to main runs on development within 30 minutes        | We iterate quickly, and QA never waits on a deploy.                                               |
+| Zero resources outside Git; changes made outside it are reverted | Git is the only way in, CI included.                                                              |
+| An environment can be rebuilt from code alone                    | Nothing depends on resources made by hand, and we rehearse it.                                    |
+| Nothing invalid reaches a cluster                                | Every change is validated before merge: manifests checked, images scanned, leaked secrets caught. |
+| Infrastructure cost down by at least 20%                         | Capacity follows usage, not the worst day.                                                        |
+| A CI job fails only when the code is wrong                       | Nobody re-runs a job by hand, or waits for the night, to get an approved PR merged.               |
+
+None of them says how. That was the next question.
+
+## The first plan
+
+Leadership was looking at the infrastructure cost at the same time, and seeing the same problem. So the first plan was to fix it where we were: keep the cloud, close the gaps, cut the bill.
+
+- Hand the apply to a controller in the cluster, Flux, so Git is reconciled continuously.
+- Simplify the Pulumi program into plain manifests: one common base, and one overlay per environment that states only what differs.
+- Break down the bill, see where the money goes, and model the alternatives.
+- Make the flaky tests reliable, and stop the image builds from rebuilding everything.
+
+One of our goals turned out to matter more than we expected. A platform that can be rebuilt from code alone is no longer tied to where it runs. That changes the cost question from "how do we trim this bill?" to "where should this run?"
+
+_This is the first post in a series that follows this from the problem to a finished migration. Next: what fixing it where we were would have saved, and why we didn't stop there._
+
+_Where we are today: on the new platform, nearly all of these goals are met for the environments that have moved. Staging is mid-migration, and production has not moved yet._
