@@ -94,31 +94,6 @@ const app = new aws.amplify.App(
     repository: 'https://github.com/a-h-i/personal-website',
     accessToken: githubToken,
     platform: 'WEB_COMPUTE',
-    buildSpec: `
-version: 1
-frontend:
-    phases:
-        preBuild:
-            commands:
-              - nvm install 24.20.0
-              - nvm use 24.20.0
-              - corepack enable
-              - corepack prepare pnpm@11.25.0 --activate
-              - node --version
-              - pnpm --version
-              - pnpm install --frozen-lockfile
-        build:
-            commands:
-                - pnpm build
-    artifacts:
-        baseDirectory: .next
-        files:
-            - '**/*'
-    cache:
-        paths:
-            - node_modules/**/*
-                
-    `,
     environmentVariables: {
       NEXT_PUBLIC_HOST: `https://${domain}`,
       NEXT_PUBLIC_POSTHOG_KEY: posthogKey,
