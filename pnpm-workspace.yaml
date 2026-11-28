@@ -1,7 +1,7 @@
 # pnpm reads these settings here; the package.json#pnpm field is no longer read.
 overrides:
-  '@types/react': 19.2.7
-  '@types/react-dom': 19.2.3
+  '@types/react': 19.3.3
+  '@types/react-dom': 19.3.0
 
 # Every dependency shipping an install script needs an explicit true/false here, or
 # `pnpm install` fails with ERR_PNPM_IGNORED_BUILDS (strictDepBuilds defaults to true).
@@ -12,20 +12,3 @@ allowBuilds:
   '@tailwindcss/oxide': false
   sharp: false
   unrs-resolver: false
-
-# pnpm 11 holds back very fresh releases as a supply-chain cooldown. next 16.3.4 was
-# adopted deliberately (16.0.7 carries a security advisory), so pnpm recorded these
-# opt-outs. Regenerate this list if the Next version changes.
-minimumReleaseAgeExclude:
-  - '@next/env@16.3.4'
-  - '@next/eslint-plugin-next@16.3.4'
-  - '@next/swc-darwin-arm64@16.3.4'
-  - '@next/swc-darwin-x64@16.3.4'
-  - '@next/swc-linux-arm64-gnu@16.3.4'
-  - '@next/swc-linux-arm64-musl@16.3.4'
-  - '@next/swc-linux-x64-gnu@16.3.4'
-  - '@next/swc-linux-x64-musl@16.3.4'
-  - '@next/swc-win32-arm64-msvc@16.3.4'
-  - '@next/swc-win32-x64-msvc@16.3.4'
-  - eslint-config-next@16.3.4
-  - next@16.3.4
