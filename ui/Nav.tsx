@@ -27,9 +27,7 @@ export default function Nav({ showWriting }: { showWriting: boolean }) {
       <h1 className='text-3xl font-bold tracking-tight sm:text-4xl'>
         Ahmed H. Ismail
       </h1>
-      <p className='text-muted mt-2'>
-        Senior Full‑stack Engineer • Technical Lead
-      </p>
+      <p className='text-muted mt-2'>Senior Full‑Stack & Platform Engineer</p>
       <p className='text-ink mt-4 max-w-sm'>
         Over a decade owning complex features end to end — real-time and
         AI-powered web products, high-throughput services, and the Kubernetes

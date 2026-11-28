@@ -3,7 +3,7 @@ import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 
 export const alt =
-  'Ahmed H. Ismail, senior full-stack engineer and technical lead, on a street in Porto, Portugal';
+  'Ahmed H. Ismail, senior full-stack and platform engineer, on a street in Porto, Portugal';
 export const size = { width: 1200, height: 630 };
 export const contentType = 'image/png';
 
@@ -115,8 +115,8 @@ export default async function OpengraphImage() {
             color: '#e2e8f0',
           }}
         >
-          <div>Senior Full-stack Engineer</div>
-          <div>& Technical Lead</div>
+          <div>Senior Full-Stack</div>
+          <div>& Platform Engineer</div>
         </div>
         <div
           style={{

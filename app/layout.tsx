@@ -17,7 +17,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: 'Ahmed H. Ismail',
   description:
-    'Senior full-stack engineer and technical lead in Porto. Real-time and AI-powered web products, high-throughput services, and the platforms underneath them.',
+    'Senior full-stack and platform engineer in Porto. Real-time and AI-powered web products, high-throughput services, and the platforms underneath them.',
   applicationName: 'Ahmed H. Ismail',
   authors: [
     {
@@ -28,6 +28,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_HOST!),
   keywords: [
     'Full-stack Engineer',
+    'Platform Engineer',
     'Technical Lead',
     'Next.js',
     'React',
@@ -63,9 +64,9 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     url: process.env.NEXT_PUBLIC_HOST!,
-    title: 'Ahmed H. Ismail — Senior Full-stack Engineer & Technical Lead',
+    title: 'Ahmed H. Ismail — Senior Full-Stack & Platform Engineer',
     description:
-      'Senior full-stack engineer and technical lead in Porto. Real-time and AI-powered web products, high-throughput services, and the platforms underneath them.',
+      'Senior full-stack and platform engineer in Porto. Real-time and AI-powered web products, high-throughput services, and the platforms underneath them.',
     images: [`${process.env.NEXT_PUBLIC_HOST!}/opengraph-image`],
   },
   icons: {

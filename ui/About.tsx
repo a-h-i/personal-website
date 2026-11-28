@@ -25,8 +25,8 @@ export default function About() {
       </div>
       <div className='text-ink mt-6 space-y-4 leading-relaxed'>
         <p>
-          I’m Ahmed, a product-minded senior full-stack engineer and technical
-          lead with over a decade of owning complex features end to end, across
+          I’m Ahmed, a product-minded senior full-stack and platform engineer
+          with over a decade of owning complex features end to end, across
           modern web products and high-throughput services. I’m based in Porto,
           with reliable overlap for EU and US time zones.
         </p>

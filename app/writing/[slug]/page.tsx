@@ -137,7 +137,7 @@ export default async function PostPage({ params }: Props) {
         <Link href='/' className='text-accent-soft hover:text-emerald-200'>
           Ahmed H. Ismail
         </Link>
-        , senior full-stack engineer and technical lead in Porto.
+        , senior full-stack and platform engineer in Porto.
       </p>
     </article>
   );
