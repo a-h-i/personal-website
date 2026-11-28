@@ -2,6 +2,7 @@
 overrides:
   '@types/react': 19.3.3
   '@types/react-dom': 19.3.0
+  postcss-selector-parser: 6.1.6
 
 # Every dependency shipping an install script needs an explicit true/false here, or
 # `pnpm install` fails with ERR_PNPM_IGNORED_BUILDS (strictDepBuilds defaults to true).

@@ -1,4 +1,5 @@
 import type { NextConfig } from 'next';
+import createMDX from '@next/mdx';
 import { createHash } from 'node:crypto';
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
@@ -54,4 +55,9 @@ const nextConfig: NextConfig = {
   },
 };
 
-export default nextConfig;
+// Turbopack takes plugins by name, since it cannot pass functions to its loader.
+const withMDX = createMDX({
+  options: { remarkPlugins: ['remark-gfm', 'remark-frontmatter'] },
+});
+
+export default withMDX(nextConfig);

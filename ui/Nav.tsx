@@ -7,36 +7,21 @@ import { clsx } from 'clsx';
 import { RESUME_HREF } from '@/lib/resume';
 
 const navItems = [
-  {
-    name: 'About',
-    href: '#about',
-  },
-  {
-    name: 'Stack',
-    href: '#stack',
-  },
-  {
-    name: 'Experience',
-    href: '#experience',
-  },
-  {
-    name: 'Projects',
-    href: '#projects',
-  },
-  {
-    name: 'Certifications',
-    href: '#certifications',
-  },
-  {
-    name: 'Writing',
-    href: '#writing',
-  },
+  { name: 'About', href: '#about' },
+  { name: 'Writing', href: '#writing' },
+  { name: 'Stack', href: '#stack' },
+  { name: 'Experience', href: '#experience' },
+  { name: 'Projects', href: '#projects' },
+  { name: 'Certifications', href: '#certifications' },
 ];
 
 const sectionIds = navItems.map((item) => item.href.replace('#', ''));
 
-export default function Nav() {
+export default function Nav({ showWriting }: { showWriting: boolean }) {
   const activeId = useScrollSpy(sectionIds);
+  const items = navItems.filter(
+    (item) => showWriting || item.name !== 'Writing',
+  );
   return (
     <aside className='lg:sticky lg:top-16 lg:self-start'>
       <h1 className='text-3xl font-bold tracking-tight sm:text-4xl'>
@@ -53,7 +38,7 @@ export default function Nav() {
       </p>
       <nav className='mt-10 hidden lg:block'>
         <ul className='space-y-2'>
-          {navItems.map((item) => {
+          {items.map((item) => {
             const isActive = activeId === item.href.replace('#', '');
             return (
               <li key={item.name}>

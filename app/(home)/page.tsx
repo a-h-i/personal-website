@@ -12,11 +12,11 @@ export default function Home() {
   return (
     <section className='space-y-24'>
       <About />
+      <Writing />
       <Stack />
       <Experience />
       <Projects />
       <Certification />
-      <Writing />
     </section>
   );
 }

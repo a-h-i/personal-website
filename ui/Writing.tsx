@@ -1,26 +1,30 @@
-import {
-  getMediumFeed,
-  MediumFeedItem,
-} from '@/lib/actions/mediumPosts.action';
-export const revalidate = 60 * 60;
+import Link from 'next/link';
+import { ArrowUpRight } from 'lucide-react';
+import { getPosts } from '@/lib/writing';
+import PostCard from '@/ui/writing/PostCard';
 
-export default async function Writing() {
-  const posts: MediumFeedItem[] = await getMediumFeed();
+export default function Writing() {
+  const posts = getPosts().slice(0, 3);
+  if (posts.length === 0) return null;
   return (
     <section id='writing' className='scroll-mt-24'>
       <h2 className='text-accent text-sm font-semibold tracking-widest uppercase'>
         Writing
       </h2>
-      <div className='mt-6 grid gap-5 md:grid-cols-2'>
+      <ul className='mt-6 space-y-5'>
         {posts.map((post) => (
-          <a
-            key={post.guid}
-            className='bg-surface ring-line rounded-xl p-5 text-base font-semibold ring-1 hover:underline hover:ring-white/20'
-            href={post.link}
-          >
-            {post.title}
-          </a>
+          <li key={post.slug}>
+            <PostCard post={post} />
+          </li>
         ))}
+      </ul>
+      <div className='mt-4'>
+        <Link
+          href='/writing'
+          className='text-accent-soft inline-flex items-center gap-2 text-sm hover:text-emerald-200'
+        >
+          All writing <ArrowUpRight className='h-4 w-4' />
+        </Link>
       </div>
     </section>
   );
