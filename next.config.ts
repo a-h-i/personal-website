@@ -19,11 +19,39 @@ const resumeVersion = createHash('sha256')
   .digest('hex')
   .slice(0, 8);
 
+// 'unsafe-inline' stays because Next.js inlines its hydration scripts in prerendered pages.
+const contentSecurityPolicy = [
+  "default-src 'self'",
+  `script-src 'self' 'unsafe-inline' https://*.posthog.com${
+    process.env.NODE_ENV === 'development' ? " 'unsafe-eval'" : ''
+  }`,
+  "style-src 'self' 'unsafe-inline'",
+  "img-src 'self' data: blob:",
+  "font-src 'self' data:",
+  "connect-src 'self' https://*.posthog.com",
+  "worker-src 'self' blob:",
+  "object-src 'none'",
+  "base-uri 'self'",
+  "form-action 'self'",
+  "frame-ancestors 'self'",
+].join('; ');
+
 const nextConfig: NextConfig = {
   // Inlined at build time, so both server and client components can read it.
   env: { NEXT_PUBLIC_RESUME_VERSION: resumeVersion },
   // Stops next dev from writing AGENTS.md and CLAUDE.md into the repo.
   agentRules: false,
+  poweredByHeader: false,
+  async headers() {
+    return [
+      {
+        source: '/:path*',
+        headers: [
+          { key: 'Content-Security-Policy', value: contentSecurityPolicy },
+        ],
+      },
+    ];
+  },
 };
 
 export default nextConfig;
