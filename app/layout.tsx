@@ -1,7 +1,6 @@
 import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
 import './globals.css';
-import Nav from '@/ui/Nav';
 import React from 'react';
 import ConsentProvider from '@/lib/analytics/ConsentProvider';
 
@@ -83,20 +82,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang='en'>
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        <ConsentProvider>
-          <div className='min-h-screen bg-slate-900 text-slate-400 selection:bg-teal-300 selection:text-teal-900'>
-            <main className='mx-auto w-full max-w-6xl px-6 py-10 md:px-8 md:py-16'>
-              <div className='grid gap-10 md:grid-cols-[1fr_2fr] md:gap-12 lg:gap-16'>
-                <Nav />
-                {children}
-              </div>
-            </main>
-          </div>
-        </ConsentProvider>
+    <html lang='en' className={`${geistSans.variable} ${geistMono.variable}`}>
+      <body className='bg-page text-muted min-h-screen antialiased selection:bg-teal-300 selection:text-teal-900'>
+        <ConsentProvider>{children}</ConsentProvider>
       </body>
     </html>
   );

@@ -103,16 +103,16 @@ const stack: StackGroup[] = [
 export default function Stack() {
   return (
     <section id='stack' className='scroll-mt-24'>
-      <h2 className='text-sm font-semibold tracking-widest text-emerald-400 uppercase'>
+      <h2 className='text-accent text-sm font-semibold tracking-widest uppercase'>
         Core Stack
       </h2>
-      <dl className='mt-6 divide-y divide-white/5 rounded-xl bg-slate-900/40 ring-1 ring-white/10'>
+      <dl className='bg-surface ring-line mt-6 divide-y divide-white/5 rounded-xl ring-1'>
         {stack.map((group) => (
           <div
             key={group.label}
             className='grid gap-2 p-5 sm:grid-cols-[8rem_1fr] sm:gap-4'
           >
-            <dt className='text-xs tracking-widest text-slate-400 uppercase sm:pt-1'>
+            <dt className='text-muted text-xs tracking-widest uppercase sm:pt-1'>
               {group.label}
             </dt>
             <dd className='flex flex-wrap gap-2'>

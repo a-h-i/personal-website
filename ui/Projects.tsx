@@ -100,7 +100,7 @@ const projects: ProjectItemProps[] = [
 export default function Projects() {
   return (
     <section id='projects' className='scroll-mt-24'>
-      <h2 className='text-sm font-semibold tracking-widest text-emerald-400 uppercase'>
+      <h2 className='text-accent text-sm font-semibold tracking-widest uppercase'>
         Projects
       </h2>
       <div className='mt-6 grid gap-5 md:grid-cols-2'>

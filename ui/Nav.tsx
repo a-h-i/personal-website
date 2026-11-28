@@ -42,10 +42,10 @@ export default function Nav() {
       <h1 className='text-3xl font-bold tracking-tight sm:text-4xl'>
         Ahmed H. Ismail
       </h1>
-      <p className='mt-2 text-slate-400'>
+      <p className='text-muted mt-2'>
         Senior Full‑stack Engineer • Technical Lead
       </p>
-      <p className='mt-4 max-w-sm text-slate-300'>
+      <p className='text-ink mt-4 max-w-sm'>
         Over a decade owning complex features end to end — real-time and
         AI-powered web products, high-throughput services, and the Kubernetes
         platforms underneath them. Based in Porto, working remotely across EU
@@ -60,22 +60,22 @@ export default function Nav() {
                 <Link
                   href={item.href}
                   className={clsx(
-                    'group flex items-center gap-3 rounded-md px-2 py-2 text-sm font-medium text-slate-400 hover:text-slate-200',
+                    'group text-muted hover:text-heading flex items-center gap-3 rounded-md px-2 py-2 text-sm font-medium',
                     {
-                      'bg-slate-900/40': isActive,
+                      'bg-surface': isActive,
                     },
                   )}
                 >
                   <span
                     className={clsx(
-                      'h-px transition group-hover:w-10 group-hover:bg-emerald-400 group-focus-visible:w-10 group-focus-visible:bg-emerald-400',
+                      'group-hover:bg-accent group-focus-visible:bg-accent h-px transition group-hover:w-10 group-focus-visible:w-10',
                       {
-                        'w-10 bg-emerald-400': isActive,
-                        'w-6 bg-slate-700': !isActive,
+                        'bg-accent w-10': isActive,
+                        'bg-rule w-6': !isActive,
                       },
                     )}
                   />
-                  <span className='text-xs tracking-widest uppercase group-focus-visible:text-slate-200'>
+                  <span className='group-focus-visible:text-heading text-xs tracking-widest uppercase'>
                     {item.name}
                   </span>
                 </Link>
@@ -85,18 +85,18 @@ export default function Nav() {
         </ul>
       </nav>
 
-      <div className='mt-10 flex items-center gap-4 text-slate-400'>
+      <div className='text-muted mt-10 flex items-center gap-4'>
         <a
           href='https://github.com/a-h-i'
           aria-label='GitHub'
-          className='rounded-md bg-emerald-500 p-2 ring-1 ring-white/10 transition hover:text-slate-200 hover:ring-white'
+          className='bg-accent-strong ring-line hover:text-heading rounded-md p-2 ring-1 transition hover:ring-white'
         >
           <Image src='/github.svg' alt='github' width={16} height={16} />
         </a>
         <a
           href='https://stackoverflow.com/users/1345339/a-h'
           aria-label='Stack Overflow'
-          className='rounded-md bg-emerald-500 p-2 ring-1 ring-white/10 transition hover:text-slate-200 hover:ring-white'
+          className='bg-accent-strong ring-line hover:text-heading rounded-md p-2 ring-1 transition hover:ring-white'
         >
           <Image
             src='/stackoverflow.svg'
@@ -108,28 +108,28 @@ export default function Nav() {
         <a
           href='https://www.linkedin.com/in/ah450/'
           aria-label='LinkedIn'
-          className='rounded-md bg-emerald-500 p-2 ring-1 ring-white/10 transition hover:text-slate-200 hover:ring-white'
+          className='bg-accent-strong ring-line hover:text-heading rounded-md p-2 ring-1 transition hover:ring-white'
         >
           <Image src='/linkedin.png' alt='linkedin' width={16} height={16} />
         </a>
         <a
           href='mailto:ahm3d.hisham@gmail.com'
           aria-label='Email'
-          className='rounded-md bg-emerald-500 p-2 ring-1 ring-white/10 transition hover:text-slate-200 hover:ring-white'
+          className='bg-accent-strong ring-line hover:text-heading rounded-md p-2 ring-1 transition hover:ring-white'
         >
           <Mail color='black' className='h-4 w-4' />
         </a>
         <a
           href='https://medium.com/@ahm3d.hisham'
           aria-label='Medium'
-          className='rounded-md bg-emerald-500 p-2 ring-1 ring-white/10 transition hover:text-slate-200 hover:ring-white'
+          className='bg-accent-strong ring-line hover:text-heading rounded-md p-2 ring-1 transition hover:ring-white'
         >
           <Image alt='medium' src='/medium.svg' width={16} height={16} />
         </a>
         <a
           href={RESUME_HREF}
           aria-label='Resume'
-          className='rounded-md bg-emerald-500 p-2 ring-1 ring-white/10 transition hover:text-slate-200 hover:ring-white'
+          className='bg-accent-strong ring-line hover:text-heading rounded-md p-2 ring-1 transition hover:ring-white'
         >
           <FileUser color='black' className='h-4 w-4' />
         </a>

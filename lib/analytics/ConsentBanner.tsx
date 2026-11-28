@@ -14,7 +14,7 @@ export default function ConsentBanner(props: ConesnetBannerProps) {
       open={props.open}
       aria-modal='true'
       aria-labelledby='consent-title'
-      className='fixed bottom-2 z-50 mx-auto w-[80dvw] rounded-2xl border bg-slate-900 p-4 text-slate-400 shadow-xl shadow-slate-800 selection:bg-teal-300 selection:text-teal-900 md:p-5'
+      className='bg-page text-muted fixed bottom-2 z-50 mx-auto w-[80dvw] rounded-2xl border p-4 shadow-xl shadow-slate-800 selection:bg-teal-300 selection:text-teal-900 md:p-5'
     >
       <div>
         <div className='flex items-start gap-4'>
@@ -22,7 +22,7 @@ export default function ConsentBanner(props: ConesnetBannerProps) {
             <h2 id='consent-title' className='text-base font-semibold'>
               Privacy & cookies
             </h2>
-            <p className='mt-1 text-sm text-slate-300'>
+            <p className='text-ink mt-1 text-sm'>
               We use analytics (PostHog) to understand visits, referrers, and
               interaction.
             </p>
@@ -31,13 +31,13 @@ export default function ConsentBanner(props: ConesnetBannerProps) {
         <div className='mt-4 flex flex-wrap items-center justify-between gap-3'>
           <div className='flex gap-2'>
             <button
-              className='cursor-pointer rounded-lg px-4 py-2 text-sm ring-1 ring-white/10 hover:underline'
+              className='ring-line cursor-pointer rounded-lg px-4 py-2 text-sm ring-1 hover:underline'
               onClick={() => props.onSave({ analytics: false })}
             >
               Reject
             </button>
             <button
-              className='cursor-pointer rounded-lg px-4 py-2 text-sm ring-1 ring-white/10 hover:underline'
+              className='ring-line cursor-pointer rounded-lg px-4 py-2 text-sm ring-1 hover:underline'
               onClick={() => props.onSave({ analytics: true })}
             >
               Accept

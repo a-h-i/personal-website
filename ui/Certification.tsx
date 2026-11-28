@@ -28,7 +28,7 @@ const certs: CertificationItemProps[] = [
 export default function Certification() {
   return (
     <section id='certifications' className='scroll-mt-24'>
-      <h2 className='text-sm font-semibold tracking-widest text-emerald-400 uppercase'>
+      <h2 className='text-accent text-sm font-semibold tracking-widest uppercase'>
         Certifications
       </h2>
       <ul className='mt-6 space-y-6'>

@@ -4,7 +4,7 @@ import me from '@/public/me_wide.jpg';
 export default function About() {
   return (
     <section id='about' className='scroll-mt-24'>
-      <h2 className='text-sm font-semibold tracking-widest text-emerald-400 uppercase'>
+      <h2 className='text-accent text-sm font-semibold tracking-widest uppercase'>
         About
       </h2>
       {/*
@@ -13,7 +13,7 @@ export default function About() {
         environmental portrait. Framed like the site's cards so it belongs.
         priority because this is the first section, so it is the LCP element.
       */}
-      <div className='mt-6 overflow-hidden rounded-xl ring-1 ring-white/10'>
+      <div className='ring-line mt-6 overflow-hidden rounded-xl ring-1'>
         <Image
           src={me}
           alt='Ahmed H. Ismail on a city street, looking at the camera'
@@ -23,7 +23,7 @@ export default function About() {
           className='h-auto w-full'
         />
       </div>
-      <div className='mt-6 space-y-4 leading-relaxed text-slate-300'>
+      <div className='text-ink mt-6 space-y-4 leading-relaxed'>
         <p>
           I’m Ahmed, a product-minded senior full-stack engineer and technical
           lead with over a decade of owning complex features end to end, across

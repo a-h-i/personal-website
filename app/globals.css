@@ -1,26 +1,24 @@
 @import 'tailwindcss';
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* The site's palette; static so charts and inline SVG can read the variables. */
+@theme static {
+  --color-page: oklch(20.8% 0.042 265.755);
+  --color-surface: color-mix(
+    in oklab,
+    oklch(20.8% 0.042 265.755) 40%,
+    transparent
+  );
+  --color-rule: oklch(37.2% 0.044 257.287);
+  --color-line: color-mix(in oklab, white 10%, transparent);
+  --color-muted: oklch(70.4% 0.04 256.788);
+  --color-ink: oklch(86.9% 0.022 252.894);
+  --color-heading: oklch(92.9% 0.013 255.508);
+  --color-accent: oklch(76.5% 0.177 163.223);
+  --color-accent-soft: oklch(84.5% 0.143 164.978);
+  --color-accent-strong: oklch(69.6% 0.17 162.48);
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
 }

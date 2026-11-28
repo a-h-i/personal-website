@@ -193,7 +193,7 @@ const experience: ExperienceItemProps[] = [
 export default function Experience() {
   return (
     <section id='experience' className='scroll-mt-24'>
-      <h2 className='text-sm font-semibold tracking-widest text-emerald-400 uppercase'>
+      <h2 className='text-accent text-sm font-semibold tracking-widest uppercase'>
         Experience
       </h2>
       <ol className='mt-6 space-y-6'>
@@ -213,7 +213,7 @@ export default function Experience() {
       <div className='mt-4'>
         <a
           href={RESUME_HREF}
-          className='inline-flex items-center gap-2 text-sm text-emerald-300 hover:text-emerald-200'
+          className='text-accent-soft inline-flex items-center gap-2 text-sm hover:text-emerald-200'
         >
           View full résumé <ArrowUpRight className='h-4 w-4' />
         </a>
